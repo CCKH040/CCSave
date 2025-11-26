@@ -3044,7 +3044,7 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 						RecoveredScripts
 						) .. "\n" or "")
 					.. [[
-		--[[Thank you for using CCRH Save Service (Join to Save Games) https://discord.gg/qckHumfRSQ.
+		Thank you for using CCHR Save Service (Join to Save Games) https://discord.gg/qckHumfRSQ.
 
 		If you didn't save in Binary (rbxl) - it's recommended to save the game right away to take advantage of the binary format & to preserve values of certain properties if you used IgnoreDefaultProperties setting (as they might change in the future).
 		You can do that by going to FILE -> Save to File As -> Make sure File Name ends with .rbxl -> Save
@@ -3078,12 +3078,17 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 
 		This file was generated with the following settings:
 		]]
+					.. service.HttpService:JSONEncode(OPTIONS)
+					.. "\n\n\t\tElapsed time: "
+					.. os.clock() - elapse_t
 					.. " PlaceId: "
 					.. game.PlaceId
 					.. " PlaceVersion: "
 					.. game.PlaceVersion
 					.. " Client Version: "
 					.. version()
+					.. " Executor: "
+					.. (identify_executor and table.concat({ identify_executor() }, " ") or "Unknown")
 					.. "\n]]"
 			)
 		end
