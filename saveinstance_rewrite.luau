@@ -3,7 +3,7 @@
 --!divine-intellect
 -- https://discord.gg/wx4ThpAsmw
 
-local konstantdecompiler = loadstring(game:HttpGet('https://raw.githubusercontent.com/verysigmapro/UniversalSynSaveInstance-With-Save-Terrain/refs/heads/main/konstantdecompiler.lua'))()
+local konstantdecompiler = loadstring(game:HttpGet('https://raw.githubusercontent.com/CCKH040/CCSave/refs/heads/main/konstantdecompiler.lua'))()
 
 local game = game
 local pcall = pcall
@@ -185,7 +185,7 @@ do -- * Load Region of Déjà Vu
 		local reselim_base64encode
 		pcall(function()
 			local b64_enc_buf = loadstring(
-				game:HttpGet("https://raw.githubusercontent.com/verysigmapro/UniversalSynSaveInstance-With-Save-Terrain/refs/heads/main/ReselimBase64.lua", true),
+				game:HttpGet("https://raw.githubusercontent.com/CCKH040/CCSave/refs/heads/main/ReselimBase64.lua", true),
 				"Base64"
 			)().encode
 			reselim_base64encode = function(raw)
