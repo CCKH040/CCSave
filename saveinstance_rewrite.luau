@@ -3084,6 +3084,7 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 					.. game.PlaceVersion
 					.. " Client Version: "
 					.. version()
+					.. "\n]]"
 			)
 		end
 		do
