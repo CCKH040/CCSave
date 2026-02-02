@@ -3035,8 +3035,8 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 		end
 
 		if OPTIONS.ReadMe then
-    local readMeText = [[
-
+    local readMeText = {
+	--[[
 	Thank you for using CCRH Save Instance (Join to Save Games): https://discord.gg/qckHumfRSQ
 	If you didn’t save your game in Binary (.rbxl) format, we recommend saving it now.
 	The binary format preserves property values more reliably—especially if you’ve enabled the IgnoreDefaultProperties setting,
@@ -3084,18 +3084,16 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 
 	workspace.CurrentCamera.CameraType = Enum.CameraType.Fixed
 	or simply delete the current camera instance.
+	]]
 
-This file was generated with the following settings:
-]]
+	script:Destroy()
+	}
 
     save_extra(
         "README",
         nil,
         "Script",
-        "script:Destroy()\\n--[[\\n"
-            .. "IMPORTANT: " .. service.HttpService:JSONEncode(OPTIONS) .. "\\n"
-            .. readMeText:gsub("^%s*(.-)%s*$", "%1")  -- Trim whitespace
-            .. "\\n\\t\\tElapsed time: " .. (os.clock() - elapse_t) .. " PlaceId: " .. game.PlaceId .. "\\n]]"
+        readMeText:gsub("^%s*(.-)%s*$", "%1")  -- Trim whitespace
     )
 end
 		do
