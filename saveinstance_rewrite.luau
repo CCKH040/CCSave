@@ -2879,7 +2879,7 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 											end
 										end
 
-										value = "Saved by CCRH Save Instance (Join to Copy Games) https://discord.gg/qckHumfRSQ\n\n"
+										value = "-- Saved by CCRH Save Instance (Join to Copy Games) https://discord.gg/qckHumfRSQ\n\n"
 											.. (hasLinkedSource and "-- Original Source: https://assetdelivery.roblox.com/v1/asset/?" .. (LinkedSource_type or "id") .. "=" .. (LinkedSource or LinkedSource_Url) .. "\n\n" or "")
 											.. value
 									end
