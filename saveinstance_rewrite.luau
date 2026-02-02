@@ -3081,7 +3081,7 @@ or simply delete the current camera instance.
         "README",
         nil,
         "Script",
-        "script:Destroy()\\n--[[\\n" .. readMeText .. "\\n]]"
+        "script:Destroy()" .. "\\n" .. "--[[" .. "\\n" .. readMeText
     )
 end
 
