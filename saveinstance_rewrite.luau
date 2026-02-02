@@ -3035,45 +3035,69 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 		end
 
 		if OPTIONS.ReadMe then
-			save_extra(
-				"README",
-				nil,
-				"Script",
-		Thank you for using CCRH Save Instance (Join to Save Games) https://discord.gg/qckHumfRSQ.
+    local readMeText = [[
 
-		If you didn't save in Binary (rbxl) - it's recommended to save the game right away to take advantage of the binary format & to preserve values of certain properties if you used IgnoreDefaultProperties setting (as they might change in the future).
-		You can do that by going to FILE -> Save to File As -> Make sure File Name ends with .rbxl -> Save
+	Thank you for using CCRH Save Instance (Join to Save Games): https://discord.gg/qckHumfRSQ
+	If you didn’t save your game in Binary (.rbxl) format, we recommend saving it now.
+	The binary format preserves property values more reliably—especially if you’ve enabled the IgnoreDefaultProperties setting,
+	as some values may change in the future.
 
-		ServerStorage, ServerScriptService and Server Scripts are IMPOSSIBLE to save because of FilteringEnabled.
+	To save properly:
+	Go to File → Save to File As...
+	Ensure the file name ends with .rbxl
+	Click Save
 
-		If your player cannot spawn into the game, please move the scripts in StarterPlayer somewhere else. Then run `game:GetService("Players").CharacterAutoLoads = true`.
-		And use "Play Here" to start game instead of "Play" to spawn your Character where your Camera currently is.
+	Please note:
+	ServerStorage, ServerScriptService, and server-side scripts cannot be saved due to FilteringEnabled restrictions.
 
-		If the chat system does not work, please use the explorer and delete everything inside the TextChatService/Chat service(s). 
-		Or run `game:GetService("Chat"):ClearAllChildren() game:GetService("TextChatService"):ClearAllChildren()`
-				
-		If Union and MeshPart collisions don't work, run the script below in the Studio Command Bar:
-				
-				
-		local C = game:GetService("CoreGui")
-		local D = Enum.CollisionFidelity.Default
-				
-		for _, v in game:GetDescendants() do
-			if v:IsA("TriangleMeshPart") and not v:IsDescendantOf(C) then
-				v.CollisionFidelity = D
-			end
-		end
-		print("Done")
-				
-		If you can't move the Camera, run this script in the Studio Command Bar:
-			
-		workspace.CurrentCamera.CameraType = Enum.CameraType.Fixed
-		
-		Or Destroy the Camera.
+	If your player doesn’t spawn:
+	Move any scripts from StarterPlayer to another location.
+	Use Play Here instead of Play to spawn your character at your current camera position.
+	or run:
+	
+	game:GetService("Players").CharacterAutoLoads = true
+	
 
-			"script:Destroy()\n--[[\n"
-			)
-		end
+	If chat doesn’t work:
+	Delete everything inside the TextChatService/Chat service(s) using the Explorer,
+	or run:
+	
+	game:GetService("Chat"):ClearAllChildren()
+	game:GetService("TextChatService"):ClearAllChildren()
+	
+	If collisions for Unions or MeshParts are broken:
+	Run the following script in Studio’s Command Bar:
+
+	local C = game:GetService("CoreGui")
+	local D = Enum.CollisionFidelity.Default
+
+	for _, v in game:GetDescendants() do
+	    if v:IsA("TriangleMeshPart") and not v:IsDescendantOf(C) then
+	        v.CollisionFidelity = D
+	    end
+	end
+	
+	print("Done")
+
+	If your camera doesn’t move:
+	Run this in the Command Bar:
+
+	workspace.CurrentCamera.CameraType = Enum.CameraType.Fixed
+	or simply delete the current camera instance.
+
+This file was generated with the following settings:
+]]
+
+    save_extra(
+        "README",
+        nil,
+        "Script",
+        "script:Destroy()\\n--[[\\n"
+            .. "IMPORTANT: " .. service.HttpService:JSONEncode(OPTIONS) .. "\\n"
+            .. readMeText:gsub("^%s*(.-)%s*$", "%1")  -- Trim whitespace
+            .. "\\n\\t\\tElapsed time: " .. (os.clock() - elapse_t) .. " PlaceId: " .. game.PlaceId .. "\\n]]"
+    )
+end
 		do
 			local tmp = { "<SharedStrings>" }
 			for identifier, value in SharedStrings do
