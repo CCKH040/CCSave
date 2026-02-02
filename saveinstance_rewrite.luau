@@ -3036,6 +3036,7 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 
 if OPTIONS.ReadMe then
     local readMeText = [[
+--[[
 Thank you for using CCRH Save Instance (Join to Save Games) [https://discord.gg/qckHumfRSQ](https://discord.gg/qckHumfRSQ).
 
 If you didn’t save your game in Binary (.rbxl) format, we recommend saving it now.
@@ -3076,12 +3077,13 @@ If your camera doesn’t move:
 Run this in the Command Bar: workspace.CurrentCamera.CameraType = Enum.CameraType.Fixed
 or simply delete the current camera instance.
 ]]
+]]
 
     save_extra(
         "README",
         nil,
         "Script",
-        "script:Destroy()\n" .. "--[[\n" .. readMeText
+        "script:Destroy()\n" .. readMeText .. "\n"
     )
 end
 
