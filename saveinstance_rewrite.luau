@@ -3039,11 +3039,6 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 				"README",
 				nil,
 				"Script",
-				"script:Destroy()\n--[[\n"
-					.. (#RecoveredScripts ~= 0 and "\t\tIMPORTANT: Original Source of these Scripts was Recovered: " .. service.HttpService:JSONEncode(
-						RecoveredScripts
-						) .. "\n" or "")
-					.. [[
 		Thank you for using CCRH Save Instance (Join to Save Games) https://discord.gg/qckHumfRSQ.
 
 		If you didn't save in Binary (rbxl) - it's recommended to save the game right away to take advantage of the binary format & to preserve values of certain properties if you used IgnoreDefaultProperties setting (as they might change in the future).
@@ -3076,20 +3071,7 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 		
 		Or Destroy the Camera.
 
-		This file was generated with the following settings:
-		]]
-					.. service.HttpService:JSONEncode(OPTIONS)
-					.. "\n\n\t\tElapsed time: "
-					.. os.clock() - elapse_t
-					.. " PlaceId: "
-					.. game.PlaceId
-					.. " PlaceVersion: "
-					.. game.PlaceVersion
-					.. " Client Version: "
-					.. version()
-					.. " Executor: "
-					.. (identify_executor and table.concat({ identify_executor() }, " ") or "Unknown")
-					.. "\n]]"
+			"script:Destroy()\n--[[\n"
 			)
 		end
 		do
