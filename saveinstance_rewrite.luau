@@ -3035,55 +3035,13 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 		end
 
 if OPTIONS.ReadMe then
-    local readMeText = [[
---[[
-Thank you for using CCRH Save Instance (Join to Save Games) [https://discord.gg/qckHumfRSQ](https://discord.gg/qckHumfRSQ).
-
-If you didn’t save your game in Binary (.rbxl) format, we recommend saving it now.
-The binary format preserves property values more reliably—especially if you’ve enabled the IgnoreDefaultProperties setting,
-as some values may change in the future.
-
-To save properly:
-Go to File → Save to File As...
-Ensure the file name ends with .rbxl
-Click Save
-
-Please note:
-ServerStorage, ServerScriptService, and server-side scripts cannot be saved due to FilteringEnabled restrictions.
-
-If your player doesn’t spawn:
-Move any scripts from StarterPlayer to another location.
-Use Play Here instead of Play to spawn your character at your current camera position.
-Or run: game:GetService("Players").CharacterAutoLoads = true
-
-If chat doesn’t work:
-Delete everything inside the TextChatService/Chat service(s) using the Explorer,
-or run: game:GetService("Chat"):ClearAllChildren() game:GetService("TextChatService"):ClearAllChildren()
-
-If collisions for Unions or MeshParts are broken:
-Run the following script in Studio’s Command Bar:
-
-local C = game:GetService("CoreGui")
-local D = Enum.CollisionFidelity.Default
-
-for _, v in game:GetDescendants() do
-    if v:IsA("TriangleMeshPart") and not v:IsDescendantOf(C) then
-        v.CollisionFidelity = D
-    end
-end
-print("Done")
-
-If your camera doesn’t move:
-Run this in the Command Bar: workspace.CurrentCamera.CameraType = Enum.CameraType.Fixed
-or simply delete the current camera instance.
-]]
-]]
+   local readMeText = "script:Destroy()\n--[[\nThank you for using CCRH Save Instance (Join to Save Games) https://discord.gg/qckHumfRSQ.\n\nIf you didn’t save your game in Binary (.rbxl) format, we recommend saving it now.\nThe binary format preserves property values more reliably—especially if you’ve enabled the IgnoreDefaultProperties setting,\nas some values may change in the future.\n\nTo save properly:\nGo to File → Save to File As...\nEnsure the file name ends with .rbxl\nClick Save\n\nPlease note:\nServerStorage, ServerScriptService, and server-side scripts cannot be saved due to FilteringEnabled restrictions.\n\nIf your player doesn’t spawn:\nMove any scripts from StarterPlayer to another location.\nUse Play Here instead of Play to spawn your character at your current camera position.\nOr run: game:GetService(\"Players\").CharacterAutoLoads = true\n\nIf chat doesn’t work:\nDelete everything inside the TextChatService/Chat service(s) using the Explorer,\nor run: game:GetService(\"Chat\"):ClearAllChildren() game:GetService(\"TextChatService\"):ClearAllChildren()\n\nIf collisions for Unions or MeshParts are broken:\nRun the following script in Studio’s Command Bar:\n\nlocal C = game:GetService(\"CoreGui\")\nlocal D = Enum.CollisionFidelity.Default\n\nfor _, v in game:GetDescendants() do\n    if v:IsA(\"TriangleMeshPart\") and not v:IsDescendantOf(C) then\n        v.CollisionFidelity = D\n    end\nend\nprint(\"Done\")\n\nIf your camera doesn’t move:\nRun this in the Command Bar: workspace.CurrentCamera.CameraType = Enum.CameraType.Fixed\nor simply delete the current camera instance.\n]]"
 
     save_extra(
         "README",
         nil,
         "Script",
-        "script:Destroy()\n" .. readMeText .. "\n"
+        readMeText
     )
 end
 
