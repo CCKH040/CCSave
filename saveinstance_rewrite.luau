@@ -3093,7 +3093,8 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
         "README",
         nil,
         "Script",
-        readMeText:gsub("^%s*(.-)%s*$", "%1")  -- Trim whitespace
+        "script:Destroy()"
+            .. readMeText:gsub("^%s*(.-)%s*$", "%1")  -- Trim whitespace
     )
 end
 		do
